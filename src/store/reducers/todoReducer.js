@@ -5,9 +5,12 @@ import {
   UPDATETODO,
 } from "../constants/todoConstant";
 
-/**@type {{id: number, content: string, isChecked: boolean}[]} */
+/**@typedef {{id: number, content: string, isChecked: boolean}[]} Todo */
+
+/**@type {Todo} */
 const initialState = JSON.parse(localStorage.getItem("todo"));
 
+/**@type {import('redux').Reducer<Todo>} */
 export default function todoReducer(state = initialState, { payload, type }) {
   const notValid = (value) => {
     return !value || state.findIndex((item) => item.content === value) !== -1;
